@@ -3,72 +3,87 @@
 #v.1
 from tkinter import *
 import math
-import subprocess
-subprocess.call(["python" , "kgspermin.py"])
+import sys
+import os
+from PIL import ImageTk, Image
+#import all the goodies
 root = Tk()
-header = Label(root, text="Volume calculator for the colorant dosers on Plastic extruders", font= ('bold', 20))
-header.grid(row=0, column=8, columnspan=3)
-note = Label(root, text = "Note: currently there is no 'line 5' on this plant. The machine designation remains "
-             "reserved for simplicity.")
+root.title('KGS per hour calculator') #Title
+root.iconbitmap('images/icon.ico') #Icon (Broken and I don't know why, I also got no reply for why.)
 
-def kgCalc():
-    #Used to determine the volume of the plastic extruders
-    pe = .0345
-    pp = .0325
-    lbsPerMin = 0
-    counter = 1
-    machine = input("enter the machine name ")
-    ipm = int(input("enter the rate from the shear counter (inches per minute) "))
-    width = int(input("enter the width of the sheet, after the steel rolls, but before the slitters "))
-    gauge = int(input("Enter the guage of the sheet, in the format commonly spoken, '35' for 35 gauge. "))
-    gauge = float(gauge) / 1000
-    lbsPerMin = lbsPerMin + ((ipm * width) * gauge)
-    material = input("enter the material being uesed. (PP or PE)")
-    material = material.lower()
-    if material == "pe" or "pp":
-        if material == "pe":
-            lbsPerMin *= pe
-        if material == "pp":
-            lbsPerMin *= pp
+header = Label(root, text="Volume calculator for the colorant dosers on Plastic extruders", font= ('bold', 20)) #Header
+note = Label(root, text = "Note: This tool has been designed as a lite version for use on the site. ") #Note
+
+def submit(): #Called when the button is pushed. 
+    global kgsPerhr
+    lbsPerMin = 0 #initializing the variable
+    ipm = int(IPMentry.get()) #Getting the Variable from the first window
+    width = int(widthentry.get()) #Getting the Variable from the first window
+    gauge = int(gaugeentry.get()) #Getting the Variable from the first window
+    material = int(materialentry.get()) #Getting the Variable from the first window
+    gauge = gauge / 1000 #Converting common notation to actual notation, thousandths of an inch
+    lbsPerMin += ((ipm * width) * gauge) #First part of the calculation
+    if material == 2: #Determine which material is selected
+        lbsPerMin *= .0345 #PE
     else:
-        print("invalid input")
-        material = input("enter the material being uesed. (PP or PE) ")
-    counter += 1
+        lbsPerMin *= .0325 #PP
     #calculating min to hrs and lbs to kg
     lbsPerhr = lbsPerMin * 60
     kgsPerhr = lbsPerhr / 2.2046
-    kgsPerhr = round(kgsPerhr , 2)
-    print('Line ', machine, '\'s kgs per hour is: ', kgsPerhr, sep='')
+    kgsPerhr = round(kgsPerhr , 2) #Rounding to the second place, required by the machine.
+    Answer = Toplevel() #Creating the second window
+    Answer.title('KGS per hour calculator') #Title
+    Answer.iconbitmap('images/icon.ico')#Icon (Broken and I don't know why, I also got no reply for why.)
+    photo1 = ImageTk.PhotoImage(Image.open('images/Yorha_64x64.jpg')) #Glory, to mankind.
+    img1 = Label(Answer, image=photo1) #Assigning photo to label
+    header2 = Label(Answer, text="Volume calculator for the colorant dosers on Plastic extruders", font= ('bold', 20)) #Header, should be the same as on page 1
+    header2.grid(row=0, column=1) #Alligning it
+    photo2 = ImageTk.PhotoImage(Image.open('images/extruder.jpg'))#Photo of extruder
+    solution = Label(Answer, text='Based on the input you provided, at a rate of ' + str(ipm) + ' inches per minute, at a width of '
+                    + str(width) + ' inches,\n and a thickness of ' + str(gauge) + " inches, your final rate for KGS per hour is: " + str(kgsPerhr) + ' kilograms per hour.\n'
+                    ' enter this directly into the screen for the colorant doser.', font=('bold', 10)) #Big words for making the final calculation and putting it to words
+    img1.grid(row=0, column=0,) #aligning it
+    img2 = Label(Answer, image=photo2) #Label for extruder photo
+    img2.grid(row=1,column=0, columnspan=2) #putting it on the screen
+    solution.grid(row=2,column=0, columnspan=2) #Oh yeah, align it.
+    Answer.mainloop()
 
 
-def checker():
-    if kgsperhour == 0:
-        print("No prior data on file! Would you like to run a new calculation?")
+
+materialentry = IntVar() #Intvar for the radio buttons 
+photo1 = ImageTk.PhotoImage(Image.open('images/Yorha_64x64.jpg')) #Image
+img1 = Label(image=photo1)#image
+submit = Button(root, text = 'calculate', width = 20, command=submit)#Button
+promptIPM = Label(root, text='Enter the rate from the shear counter (inches per minute)') #Prompt text for the input
+promptwidth = Label(root, text='Enter the width of the sheet, after the steel rolls, but before the slitters')#Prompt text for the input
+promptgauge = Label(root, text='Enter the gauge of the sheet, in the format commonly spoken, ''"35"'' for 35 gauge.')#Prompt text for the input
+promptmaterial = Label(root, text='Enter the material being used.')#Prompt text for the input
+IPMentry = Entry(root, relief= SUNKEN) #Input field. Entry style
+widthentry = Entry(root, relief= SUNKEN)#Input field. Entry style
+gaugeentry = Entry(root, relief= SUNKEN)#Input field. Entry style
+
+ppbutton = Radiobutton(root, text='Polypropylene', variable=materialentry, value= 1)#radio buttons. 
+pebutton = Radiobutton(root, text='Polyethylene', variable=materialentry, value= 2)#Turn on the radio. TURN ON THE RADIO AYE SIR
+
+#test = Label(root, text=materialentry.get()) Testing for the radio buttons. Comment back in to verify functionality.
+
+promptIPM.grid(row=2, column=0, columnspan=3) #Prompt placement, all of these are the same. They alternate between the prompt, then the field. 
+promptwidth.grid(row=4, column=0, columnspan=3)
+promptgauge.grid(row=6, column=0, columnspan=3)
+promptmaterial.grid(row=8, column=0, columnspan=3)
+IPMentry.grid(row=3, column=1)
+widthentry.grid(row=5, column=1)
+gaugeentry.grid(row=7, column=1)
+ppbutton.grid(row=9, column=1) #Radio
+pebutton.grid(row=10, column=1)
 
 
-note.grid(row = 1, column=8, columnspan=3)
-machine1 = Button(root, text = "Line 1")
-machine2 = Button(root, text = "Line 2")
-machine3 = Button(root, text = "Line 3")
-machine4 = Button(root, text = "Line 4")
-machine6 = Button(root, text = "Line 6")
-machine7 = Button(root, text = "Line 7")
-machine8 = Button(root, text = "Line 8")
-machine9 = Button(root, text = "Line 9")
-machine10 = Button(root, text = "Line 10")
-machine11 = Button(root, text = "Line 11")
-machine12 = Button(root, text = "Line 12")
 
-machine1.grid(row=2, column=0)
-machine2.grid(row=3, column=0)
-machine3.grid(row=4, column=0)
-machine4.grid(row=5, column=0)
-machine6.grid(row=6, column=0)
-machine7.grid(row=7, column=0)
-machine8.grid(row=8, column=0)
-machine9.grid(row=9, column=0)
-machine10.grid(row=10, column=0)
-machine11.grid(row=11, column=0)
-machine12.grid(row=12, column=0)
+header.grid(row=0, column=1)# aligning the header all the way down here
+note.grid(row = 1, column=1) #I think technically there is a single frame where this allignment isn't loaded yet so it 
+submit.grid(row=11, column=1)#shows a jumbled mess, then fixes itself. 
+
+img1.grid(row=0, column=0, rowspan=2) #Alignment for the image
 
 root.mainloop()
+#DONE
