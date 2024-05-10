@@ -1,0 +1,90 @@
+Hello and welcome to my program!!
+Contents:
+
+first window
+	input fields
+	Material types
+	Button
+Second window
+	Image
+	Using the information given
+Troubleshooting
+Final comments
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+First window
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The first thing you will be greeted by is a window demonstrating the title, a note
+and and several fields.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The input fields
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the main page are 3 fields requiring input. This information is required （*＾-＾*）
+The first field is for the IPM, or inches per minute (rate) commonly accessed from
+the shear, most counters have a button or combo to open the IPM readout. IF NOT, you
+will have to hook a handheld tacho to the UNPOWERED rubber roller(The one that raises
+and lowers). Next is the width, this measurement has to be taken after the steel 
+rollers, but before the slitters in order to be accurate to the acutal poundage before
+waste is factored out. Measure straight across, without pulling too hard, and use that
+number. The final field is the Gauge of the sheet, which has to be measured with a 
+micrometer, and is typically (supposed) to be done by the operator. Enter this value
+in the common spoken format, "35" for 35 gauge. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Material Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The two material types currently in the system are:
+Polypropylene and
+Polyethylene
+They have a density of .0325 and .0345 respectively. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The enter button, when you have filled out all of the items, press this button, and a 
+new window will appear with your information as you requested (probably). You can 
+always reenter information in the prior fields and press the button again to deploy 
+another window with updated information.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Second window
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The second window will contain the information organized for simplicity. There are 
+explicit instructions on where to put the information you get from this. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If for some reason the image doesn't load, you aren't missing much, it's just the 
+extruder with a colorant doser control panel. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using the information given
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you're looking for the window, you have to log in with the tooling password 
+(defualt is 11111), then head to setup and in there will be the KGS/HR field, which 
+should be in the ballpark of 140-170kgs per hour. This tool will give you the exact 
+value to put in that field. Once done, reset the calibration and reset the loadcell, 
+then start it back up again.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+troubleshooting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If at any point something goes wrong, reach out to me in at the contact provided in 
+the readme. Most common errors are from inputting the wrong type of information. 
+Only numbers can be input. No letters. Barring that I would have to fix it.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Final comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I hated making this. 
